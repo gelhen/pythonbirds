@@ -38,7 +38,7 @@ class Ator():
         :param tempo: o tempo do jogo
         :return: posição x, y do ator
         """
-        return 1, 1
+        return self.x, self.y
 
     def colidir(self, outro_ator, intervalo=1):
         """
@@ -52,7 +52,10 @@ class Ator():
         :param intervalo: Intervalo a ser considerado
         :return:
         """
-        pass
+        if outro_ator.status == ATIVO and self.status == ATIVO:
+            if self.x != outro_ator.x and abs(self.x - outro_ator.x) <= intervalo \
+                or self.y != outro_ator.y and abs(self.y - outro_ator.y) <= intervalo:
+                    outro_ator.status = self.status = DESTRUIDO
 
 
 
