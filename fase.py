@@ -73,7 +73,18 @@ class Fase():
 
         :return:
         """
-        return EM_ANDAMENTO
+        if not self._checa_ator_ativo(self._porcos):
+            return VITORIA
+        if self._checa_ator_ativo(self._porcos) and self._checa_ator_ativo(self._passaros):
+            return EM_ANDAMENTO
+        return  DERROTA
+
+    def _checa_ator_ativo(self, atores):
+        for a in atores:
+            if a.status == ATIVO:
+                return True
+        return False
+
 
     def lancar(self, angulo, tempo):
         """

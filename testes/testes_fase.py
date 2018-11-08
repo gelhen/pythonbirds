@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 import os
 import sys
 from os import path
@@ -13,6 +12,7 @@ from placa_grafica_tkinter import rodar_fase
 project_dir = os.path.join(os.path.dirname(__file__), '..')
 project_dir = os.path.normpath(project_dir)
 sys.path.append(project_dir)
+
 
 from atores import (Obstaculo, Porco, PassaroVermelho, PassaroAmarelo,
                     DESTRUIDO, ATIVO, DuploLancamentoExcecao)
