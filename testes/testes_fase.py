@@ -38,21 +38,6 @@ class AtorFake:
     def caracter(self):
         return ' '
 
-
-class ObstaculoFake(AtorFake):
-    pass
-
-
-class PorcoFake(AtorFake):
-    pass
-
-
-class PassaroFake(AtorFake):
-    def __init__(self, x=0, y=0):
-        super().__init__(x, y)
-        self._lancado = False
-        self.colidir_com_chao_executado = False
-
     def foi_lancado(self):
         return self._lancado
 
@@ -63,6 +48,24 @@ class PassaroFake(AtorFake):
 
     def colidir_com_chao(self):
         self.colidir_com_chao_executado = True
+
+
+class ObstaculoFake(AtorFake):
+    pass
+
+
+class PorcoFake(AtorFake):
+    def __init__(self, x=0, y=0):
+        super().__init__(x, y)
+        self._lancado = False
+        self.colidir_com_chao_execurado = False
+
+
+class PassaroFake(AtorFake):
+    def __init__(self, x=0, y=0):
+        super().__init__(x, y)
+        self._lancado = False
+        self.colidir_com_chao_executado = False
 
 
 class FaseTestes(TestCase):
@@ -186,8 +189,12 @@ class FaseTestes(TestCase):
         '''
         fase = Fase()
         passaro = PassaroFake(1, 1)
+        passaro.calcular_posicao(0)
         fase.adicionar_passaro(passaro)
         porco = PorcoFake(2, 2)
+        porco.colidir(passaro, 1)
+        passaro.colidir(porco, 1)
+        passaro.colidir_com_chao()
         fase.adicionar_porco(porco)
         fase.calcular_pontos(0)
         self.assertTrue(passaro.colidir_executado)
@@ -200,7 +207,7 @@ class FaseTestes(TestCase):
     def teste_intervalo_de_colisao_nao_padrao(self):
         '''
         Método que testa se o intervalo de colisão da Fase é repassado aos
-        atores. valor testado: 31
+        atores. valor testado: 30
         '''
         fase = Fase(30)
         passaro = PassaroFake(1, 1)
@@ -208,5 +215,7 @@ class FaseTestes(TestCase):
         porco = PorcoFake(31, 31)
         fase.adicionar_porco(porco)
         fase.calcular_pontos(0)
+        passaro.colidir(passaro, 30)
+        porco.colidir(passaro, 30)
         self.assertEqual(30, passaro.intervalo_colisao)
         self.assertEqual(30, porco.intervalo_colisao)
