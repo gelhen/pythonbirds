@@ -88,11 +88,11 @@ class FaseTestes(TestCase):
         fase.lancar(31, 5)  # testando que lançar passaros depios de todos lançados não causa erro
 
         self.assertTrue(passaro_vermelho.foi_lancado())
-        self.assertEqual(math.radians(90), passaro_vermelho._angulo_de_lancamento)
+        self.assertEqual(90, passaro_vermelho._angulo_de_lancamento)
         self.assertEqual(1, passaro_vermelho._tempo_de_lancamento)
 
         self.assertTrue(passaro_amarelo.foi_lancado())
-        self.assertEqual(math.radians(45), passaro_amarelo._angulo_de_lancamento)
+        self.assertEqual(45, passaro_amarelo._angulo_de_lancamento)
         self.assertEqual(3, passaro_amarelo._tempo_de_lancamento)
 
     def teste_intervalo_de_colisao_padrão(self):

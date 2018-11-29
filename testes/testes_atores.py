@@ -43,17 +43,15 @@ class AtorTestes(TestCase):
         self.assertEqual(0.3, x)
         self.assertEqual(0.5, y)
 
-
     def teste_colisao_entre_atores_ativos(self):
         """
         Teste de colisão entre dois atores
         Inicialmente atores possuem status ATIVO. Ao se chocarem, ele muda para DESTRUIDO
-        A função assert_colisao_atores_ativos testa justamente se dois atores ativos se chocam quando estão em posições
-        vizinhas.
+        A função assert_colisao_atores_ativos testa justamente se dois atores ativos se chocam quando estão em posições        vizinhas.
         """
         ator = Ator(2, 2)  # Ator recém criado deve ter status ativo
         ator2 = Ator(2, 2)
-        # self.assert_colisao_atores_ativos(ator, ator2)
+        self.assert_colisao_atores_ativos(ator, ator2)
         self.assert_colisao_atores_ativos(Ator(2, 2), Ator(2, 3))
         self.assert_colisao_atores_ativos(Ator(2, 2), Ator(3, 3))
         self.assert_colisao_atores_ativos(Ator(2, 2), Ator(3, 2))
@@ -195,7 +193,6 @@ class PassaroVermelhoTests(PassaroBaseTests):
     """
     Classe de teste e Passaro Vermelho
     """
-
     def teste_status(self):
         passaro_vermelho = PassaroVermelho(1, 1)
         self.assertEqual('V', passaro_vermelho.caracter())
@@ -247,7 +244,6 @@ class PassaroAmareloTests(PassaroBaseTests):
     """
     Classe de Tests para passaros amarelos
     """
-
     def teste_status(self):
         passaro_amarelo = PassaroAmarelo(1, 1)
         self.assertEqual('A', passaro_amarelo.caracter())
@@ -265,7 +261,6 @@ class PassaroAmareloTests(PassaroBaseTests):
         """
         passaro_amarelo = PassaroAmarelo(1, 1)
         passaro_amarelo.lancar(90, 2)  # passaro lancado a 90 graus no tempo 2 segundos
-
 
         # subindo
 

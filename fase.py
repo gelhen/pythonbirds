@@ -101,7 +101,7 @@ class Fase():
             for _passaro in self._passaros:
                 if not _passaro.foi_lancado():
                     _passaro.lancar(angulo, tempo)
-                    return
+                    break
 
 
     def calcular_pontos(self, tempo):
